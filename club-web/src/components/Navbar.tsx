@@ -9,10 +9,13 @@ export default function Navbar() {
 
   const nav=[
     ["首页","/"],
-    ["活动","/activity"],
-    ["新闻","/news"],
-    ["成员","/member"],
-    ["关于","/about"]
+    ["关于社团","/about"],
+    ["最新活动","/activity"],
+    ["新闻咨询","/news"],
+    ["组织架构","/structure"],
+    ["成员介绍","/member"],
+    ["加入我们","/join"],
+    ["联系我们","/contact"],
   ]
 
   return (
