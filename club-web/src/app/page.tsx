@@ -1,6 +1,5 @@
 export default function Home() {
 
-
   const news = [
     {
       title:"春季招新活动圆满结束",
@@ -29,40 +28,64 @@ export default function Home() {
   ]
 
 
-
   return (
 
     <main className="pt-20">
 
 
 
-      {/* 固定导航栏 */}
+
+      {/* ================= Banner（电脑端） ================= */}
+
+      <section className="hidden md:block">
+
+        <div
+
+          className="
+          w-full
+          h-[520px]
+          overflow-hidden
+          "
+
+        >
+
+          <img
+
+            src="/banner.jpg"
+
+            alt="Banner"
+
+            className="
+            w-full
+            h-full
+            object-cover
+            "
+
+          />
+
+        </div>
+
+      </section>
 
 
 
 
+      {/* ================= Banner（手机端） ================= */}
 
+      <section className="block md:hidden">
 
+        <img
 
+          src="/banner.jpg"
 
-      {/* Banner纯图片 */}
+          alt="Banner"
 
-      <section
+          className="
+          w-full
+          h-auto
+          "
 
-      className="
-      h-[520px]
-      bg-cover
-      bg-center
-      "
-
-      style={{
-
-        backgroundImage:
-        "url('/banner.jpg')"
-
-      }}
-
-      >
+        />
 
       </section>
 
@@ -72,138 +95,157 @@ export default function Home() {
 
 
 
-
-      {/* 数据展示 */}
+      {/* ================= 数据展示 ================= */}
 
       <section
 
-      className="
-      bg-red-900
-      text-white
-      py-20
-      "
+        className="
+        bg-red-900
+        text-white
+        py-14
+        md:py-20
+        "
 
       >
 
-
         <h2
-        className="
-        text-center
-        text-4xl
-        font-bold
-        mb-16
-        "
+
+          className="
+          text-3xl
+          md:text-4xl
+          font-bold
+          text-center
+          mb-12
+          md:mb-16
+          "
+
         >
 
-        数据 · 见证成长
+          数据 · 见证成长
 
         </h2>
 
 
 
 
+
         <div
 
-        className="
-        max-w-5xl
-        mx-auto
-        grid
-        grid-cols-3
-        gap-16
-        text-center
-        "
+          className="
+          max-w-6xl
+          mx-auto
+          px-6
+          grid
+          grid-cols-2
+          md:grid-cols-3
+          gap-10
+          md:gap-16
+          text-center
+          "
 
         >
 
-
-
           <Data
-          number="1200+"
-          text="社团成员"
-          />
 
+            number="1200+"
 
-          <Data
-          number="80+"
-          text="举办活动"
-          />
+            text="社团成员"
 
-
-          <Data
-          number="15"
-          text="核心部门"
           />
 
 
 
           <Data
-          number="300+"
-          text="累计参与人数"
+
+            number="80+"
+
+            text="举办活动"
+
           />
+
 
 
           <Data
-          number="20"
-          text="优秀项目"
+
+            number="15"
+
+            text="核心部门"
+
           />
+
 
 
           <Data
-          number="5"
-          text="合作单位"
+
+            number="300+"
+
+            text="累计参与人数"
+
           />
 
 
+
+          <Data
+
+            number="20"
+
+            text="优秀项目"
+
+          />
+
+
+
+          <Data
+
+            number="5"
+
+            text="合作单位"
+
+          />
 
         </div>
-
-
 
       </section>
 
 
 
 
-
-
-
-
-
-      {/* 最新活动 */}
+      {/* ================= 最新活动 ================= */}
 
       <section
 
-      className="
-      px-20
-      py-20
-      "
+        className="
+        px-5
+        md:px-20
+        py-14
+        md:py-20
+        "
 
       >
 
-
-
         <div
 
-        className="
-        flex
-        justify-between
-        items-center
-        mb-10
-        "
+          className="
+          flex
+          justify-between
+          items-center
+          mb-8
+          md:mb-10
+          "
 
         >
 
-
           <h2
 
-          className="
-          text-4xl
-          font-bold
-          "
+            className="
+            text-3xl
+            md:text-4xl
+            font-bold
+            "
 
           >
 
-          最新活动
+            最新活动
 
           </h2>
 
@@ -211,140 +253,127 @@ export default function Home() {
 
           <span
 
-          className="
-          text-gray-500
-          "
+            className="
+            text-sm
+            md:text-base
+            text-gray-500
+            cursor-pointer
+            hover:text-red-900
+            duration-300
+            "
 
           >
 
-          查看更多 →
+            查看更多 →
 
           </span>
 
-
-
         </div>
-
-
-
 
 
 
 
         <div
 
-        className="
-        space-y-5
-        "
-
-        >
-
-
-        {
-
-        news.map((item)=>(
-
-
-          <div
-
-          key={item.title}
-
           className="
-          flex
-          justify-between
-          items-center
-          border-b
-          pb-5
+          space-y-4
+          md:space-y-5
           "
 
-          >
+        >
+        {
 
+          news.map((item)=>(
 
             <div
 
-            className="
-            flex
-            items-center
-            gap-4
-            "
+              key={item.title}
+
+              className="
+              flex
+              justify-between
+              items-center
+              gap-4
+              border-b
+              pb-5
+              hover:bg-gray-50
+              duration-300
+              px-2
+              rounded-lg
+              "
 
             >
+
+              <div
+
+                className="
+                flex
+                items-center
+                gap-3
+                flex-1
+                min-w-0
+                "
+
+              >
+
+                <span
+
+                  className="
+                  w-2
+                  h-2
+                  bg-blue-500
+                  rounded-full
+                  flex-shrink-0
+                  "
+
+                />
+
+
+
+                <p
+
+                  className="
+                  text-base
+                  md:text-lg
+                  truncate
+                  "
+
+                >
+
+                  {item.title}
+
+                </p>
+
+              </div>
+
 
 
               <span
 
-              className="
-              w-2
-              h-2
-              bg-blue-400
-              rounded-full
-              "
+                className="
+                text-xs
+                md:text-base
+                text-gray-400
+                whitespace-nowrap
+                "
 
               >
 
+                {item.date}
 
               </span>
 
-
-
-              <p
-
-              className="
-              text-lg
-              "
-
-              >
-
-              {item.title}
-
-              </p>
-
-
             </div>
 
-
-
-
-
-            <span
-
-            className="
-            text-gray-400
-            "
-
-            >
-
-            {item.date}
-
-            </span>
-
-
-
-          </div>
-
-
-
-        ))
-
+          ))
 
         }
 
-
-
         </div>
-
-
 
       </section>
 
-
-
-
-
-
-
     </main>
-
 
   )
 
@@ -355,61 +384,67 @@ export default function Home() {
 
 
 
-// 数据组件
+// ================= 数据组件 =================
 
 function Data({
 
-number,
+  number,
 
-text
+  text
 
 }:{
 
-number:string
+  number:string
 
-text:string
+  text:string
 
 }){
 
+  return (
 
-return (
+    <div
 
-<div>
+      className="
+      py-3
+      "
 
+    >
 
-<h3
+      <h3
 
-className="
-text-5xl
-font-bold
-"
+        className="
+        text-3xl
+        sm:text-4xl
+        md:text-5xl
+        font-bold
+        "
 
->
+      >
 
-{number}
+        {number}
 
-</h3>
-
-
-
-<p
-
-className="
-mt-3
-text-lg
-"
-
->
-
-{text}
-
-</p>
+      </h3>
 
 
 
-</div>
+      <p
 
-)
+        className="
+        mt-3
+        text-sm
+        sm:text-base
+        md:text-lg
+        text-gray-200
+        "
 
+      >
+
+        {text}
+
+      </p>
+
+    </div>
+
+  )
 
 }
