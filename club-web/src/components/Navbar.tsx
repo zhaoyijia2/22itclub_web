@@ -1,130 +1,81 @@
-import Link from "next/link";
+"use client"
+
+import Link from "next/link"
+import { useState } from "react"
+
+export default function Navbar() {
+
+  const [open,setOpen] = useState(false)
+
+  const nav=[
+    ["首页","/"],
+    ["活动","/activity"],
+    ["新闻","/news"],
+    ["成员","/member"],
+    ["关于","/about"]
+  ]
+
+  return (
+    <header className="fixed top-0 left-0 w-full bg-white z-50 shadow">
+
+      <div className="flex items-center justify-between px-5 py-4">
+
+        {/* logo */}
+        <div className="font-bold text-lg">
+          IT社团
+        </div>
 
 
-export default function Navbar(){
+        {/* pc菜单 */}
+        <nav className="hidden md:flex gap-8">
 
-return (
+          {
+            nav.map(item=>(
+              <Link 
+              key={item[0]}
+              href={item[1]}
+              >
+                {item[0]}
+              </Link>
+            ))
+          }
 
-<header
-className="
-fixed
-top-0
-left-0
-w-full
-h-20
-bg-white
-shadow-md
-z-50
-flex
-items-center
-justify-between
-px-10
-">
+        </nav>
 
 
-<div className="
-flex
-items-center
-gap-4
-">
+        {/* 手机按钮 */}
+
+        <button
+        className="md:hidden"
+        onClick={()=>setOpen(!open)}
+        >
+          ☰
+        </button>
+
+      </div>
 
 
-<img
-src="/logo.png"
-className="
-w-14
-h-14
-"
-/>
+      {/* 手机菜单 */}
+
+      {
+        open &&
+        <nav className="md:hidden flex flex-col px-5 pb-5 gap-4">
+
+          {
+            nav.map(item=>(
+              <Link 
+              key={item[0]}
+              href={item[1]}
+              >
+                {item[0]}
+              </Link>
+            ))
+          }
+
+        </nav>
+      }
 
 
-<div>
-
-<h1 className="
-font-bold
-text-xl
-text-red-800
-">
-
-XX大学 XX社团
-
-</h1>
-
-
-<p className="
-text-xs
-text-gray-500
-">
-
-UNIVERSITY CLUB
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<nav
-className="
-flex
-gap-8
-"
->
-
-
-<Link href="/">
-首页
-</Link>
-
-
-<Link href="/about">
-社团概况
-</Link>
-
-
-<Link href="/structure">
-组织架构
-</Link>
-
-
-<Link href="/activity">
-活动展示
-</Link>
-
-
-<Link href="/news">
-新闻动态
-</Link>
-
-
-<Link href="/member">
-成员介绍
-</Link>
-
-
-<Link href="/join">
-加入我们
-</Link>
-
-
-<Link href="/contact">
-联系我们
-</Link>
-
-
-</nav>
-
-
-
-</header>
-
-
-)
-
+    </header>
+  )
 }
