@@ -1,4 +1,5 @@
-export default function Home() {
+import { supabase } from "@/lib/supabase";
+export default async function Home() {
 
   const news = [
     {
@@ -27,7 +28,11 @@ export default function Home() {
     }
   ]
 
+const { data, error } = await supabase
+  .from("news")
+  .select("*");
 
+console.log(data);
   return (
 
     <main className="pt-20">
