@@ -1,16 +1,16 @@
 import DeleteButton from "@/components/DeleteButton";
 import Link from "next/link";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function NewsAdminPage() {
-
+  const supabase = await createClient();
   const { data: news, error } = await supabase
     .from("news")
     .select("*")
     .order("date", { ascending: false });
 
   return (
-    <main className="pt-28 px-8">
+    <main className="p-10">
 
       <div className="flex justify-between items-center mb-8">
 

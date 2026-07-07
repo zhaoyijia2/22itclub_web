@@ -11,12 +11,9 @@ export default function Navbar() {
   const nav = [
     { name: "首页", href: "/" },
     { name: "关于社团", href: "/about" },
-    { name: "最新活动", href: "/activity" },
     { name: "新闻资讯", href: "/news" },
-    { name: "组织架构", href: "/structure" },
-    { name: "成员介绍", href: "/member" },
-    { name: "加入我们", href: "/join" },
     { name: "社团风采", href: "/gallery" },
+    { name: "加入我们", href: "/join" },
     { name: "联系我们", href: "/contact" },
   ];
 
