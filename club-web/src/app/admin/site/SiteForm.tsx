@@ -286,6 +286,45 @@ export default function SiteForm({
 
       </section>
 
+      <section className="bg-white rounded-xl shadow p-8">
+
+  <h2 className="text-2xl font-bold mb-8">
+    首页数据
+  </h2>
+
+  <div className="grid md:grid-cols-2 gap-8">
+
+    {[1,2,3,4,5,6].map((i)=>(
+      <div
+        key={i}
+        className="border rounded-xl p-5"
+      >
+
+        <h3 className="font-bold mb-4">
+          数据{i}
+        </h3>
+
+        <input
+          name={`home_stat${i}_name`}
+          defaultValue={(settings as any)[`home_stat${i}_name`]}
+          placeholder="名称"
+          className="w-full border rounded-lg p-3 mb-3"
+        />
+
+        <input
+          name={`home_stat${i}_value`}
+          defaultValue={(settings as any)[`home_stat${i}_value`]}
+          placeholder="数据"
+          className="w-full border rounded-lg p-3"
+        />
+
+      </div>
+    ))}
+
+  </div>
+
+</section>
+
       <div className="flex justify-end">
 
         <button

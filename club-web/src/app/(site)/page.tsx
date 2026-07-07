@@ -7,6 +7,11 @@ export const revalidate = 60;
 export default async function Home() {
   const supabase = await createClient();
 
+  const { data: settings } = await supabase
+  .from("site_settings")
+  .select("*")
+  .eq("id", 1)
+  .single();
   const { data: news } = await supabase
     .from("news")
     .select("id,title,date") // 🔥 只取需要字段（减少数据量）
@@ -46,12 +51,35 @@ export default async function Home() {
       {/* 数据 */}
       <section className="bg-red-900 text-white py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-10 text-center">
-          <Data number="1200+" text="社团成员" />
-          <Data number="80+" text="举办活动" />
-          <Data number="15" text="核心部门" />
-          <Data number="300+" text="累计参与人数" />
-          <Data number="20" text="优秀项目" />
-          <Data number="5" text="合作单位" />
+          <Data
+  number={settings?.home_stat1_value ?? ""}
+  text={settings?.home_stat1_name ?? ""}
+/>
+
+<Data
+  number={settings?.home_stat2_value ?? ""}
+  text={settings?.home_stat2_name ?? ""}
+/>
+
+<Data
+  number={settings?.home_stat3_value ?? ""}
+  text={settings?.home_stat3_name ?? ""}
+/>
+
+<Data
+  number={settings?.home_stat4_value ?? ""}
+  text={settings?.home_stat4_name ?? ""}
+/>
+
+<Data
+  number={settings?.home_stat5_value ?? ""}
+  text={settings?.home_stat5_name ?? ""}
+/>
+
+<Data
+  number={settings?.home_stat6_value ?? ""}
+  text={settings?.home_stat6_name ?? ""}
+/>
         </div>
       </section>
 
@@ -82,7 +110,42 @@ export default async function Home() {
         </div>
 
       </section>
+      {/* 友情链接 */}
+      <section className="bg-gray-100 border-t py-10">
 
+        <div className="max-w-6xl mx-auto px-6">
+
+          <h2 className="text-2xl font-bold mb-6">
+            友情链接
+          </h2>
+
+          <div className="flex flex-wrap gap-4">
+
+            <a
+              href="http://zysdesezx.m.lexiangcity.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                rounded-lg
+                border
+                bg-white
+                px-6
+                py-3
+                hover:border-red-900
+                hover:text-red-900
+                transition
+              "
+            >
+              学校官方网站 →
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
     </main>
   );
 }

@@ -40,6 +40,24 @@ export async function updateSiteSettings(formData: FormData) {
 
       club_address: formData.get("club_address") as string,
 
+      home_stat1_name: formData.get("home_stat1_name") as string,
+home_stat1_value: formData.get("home_stat1_value") as string,
+
+home_stat2_name: formData.get("home_stat2_name") as string,
+home_stat2_value: formData.get("home_stat2_value") as string,
+
+home_stat3_name: formData.get("home_stat3_name") as string,
+home_stat3_value: formData.get("home_stat3_value") as string,
+
+home_stat4_name: formData.get("home_stat4_name") as string,
+home_stat4_value: formData.get("home_stat4_value") as string,
+
+home_stat5_name: formData.get("home_stat5_name") as string,
+home_stat5_value: formData.get("home_stat5_value") as string,
+
+      home_stat6_name: formData.get("home_stat6_name") as string,
+      home_stat6_value: formData.get("home_stat6_value") as string,
+
       updated_at: new Date().toISOString(),
     })
     .eq("id", setting.id);

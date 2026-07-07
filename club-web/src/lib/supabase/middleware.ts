@@ -2,7 +2,6 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function updateSession(request: NextRequest) {
-
   let response = NextResponse.next({
     request,
   });
@@ -43,7 +42,21 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const pathname = request.nextUrl.pathname;
+
+  // 放行登录页
+  if (pathname === "/admin/login") {
+    return response;
+  }
+
+  // 后台需要登录
+  if (pathname.startsWith("/admin") && !user) {
+    return NextResponse.redirect(new URL("/admin/login", request.url));
+  }
 
   return response;
 }
