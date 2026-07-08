@@ -23,6 +23,11 @@ type SiteSettings = {
   vice_phone: string;
   vice_qq: string;
 
+  teacher_name: string;
+teacher_title: string;
+teacher_phone: string;
+teacher_qq: string;
+
   club_address: string;
 };
 
@@ -268,7 +273,45 @@ export default function SiteForm({
           </div>
 
         </div>
+<div className="mt-10">
 
+  <h3 className="text-xl font-bold mb-5">
+    指导老师
+  </h3>
+
+  <div className="space-y-4">
+
+    <input
+      name="teacher_name"
+      defaultValue={settings.teacher_name}
+      placeholder="姓名"
+      className="w-full border rounded-lg p-3"
+    />
+
+    <input
+      name="teacher_title"
+      defaultValue={settings.teacher_title}
+      placeholder="职务（如：指导教师）"
+      className="w-full border rounded-lg p-3"
+    />
+
+    <input
+      name="teacher_phone"
+      defaultValue={settings.teacher_phone}
+      placeholder="联系电话"
+      className="w-full border rounded-lg p-3"
+    />
+
+    <input
+      name="teacher_qq"
+      defaultValue={settings.teacher_qq}
+      placeholder="QQ"
+      className="w-full border rounded-lg p-3"
+    />
+
+  </div>
+
+</div>
         <div className="mt-8">
 
           <label className="block font-semibold mb-2">

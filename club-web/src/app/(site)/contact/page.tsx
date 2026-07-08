@@ -43,6 +43,37 @@ export default async function ContactPage() {
 
         </div>
 
+<div className="bg-white rounded-xl shadow p-6">
+
+  <h2 className="text-2xl font-bold mb-5">
+    指导老师
+  </h2>
+
+  <div className="space-y-3">
+
+    <p>
+      <span className="font-semibold">姓名：</span>
+      {data?.teacher_name}
+    </p>
+
+    <p>
+      <span className="font-semibold">职务：</span>
+      {data?.teacher_title}
+    </p>
+
+    <p>
+      <span className="font-semibold">电话：</span>
+      {data?.teacher_phone}
+    </p>
+
+    <p>
+      <span className="font-semibold">QQ：</span>
+      {data?.teacher_qq}
+    </p>
+
+  </div>
+
+</div>
         <div className="bg-white rounded-xl shadow p-8 mt-10">
           <h2 className="text-2xl font-bold mb-4">
             社团地址

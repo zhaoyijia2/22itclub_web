@@ -38,6 +38,11 @@ export async function updateSiteSettings(formData: FormData) {
       vice_phone: formData.get("vice_phone") as string,
       vice_qq: formData.get("vice_qq") as string,
 
+teacher_name: formData.get("teacher_name") as string,
+teacher_title: formData.get("teacher_title") as string,
+teacher_phone: formData.get("teacher_phone") as string,
+teacher_qq: formData.get("teacher_qq") as string,
+
       club_address: formData.get("club_address") as string,
 
       home_stat1_name: formData.get("home_stat1_name") as string,
