@@ -54,21 +54,29 @@ export default function GalleryGrid({
           "
           >
 
-            <div className="relative aspect-[4/3]">
+            <div
+  className="relative aspect-[4/3]"
+  onContextMenu={(e) => e.preventDefault()}
+>
 
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="
-                  object-cover
-                  hover:scale-105
-                  transition
-                  duration-300
-                "
-              />
+  <Image
+    src={item.image}
+    alt={item.title}
+    fill
+    draggable={false}
+    className="
+      object-cover
+      hover:scale-105
+      transition
+      duration-300
+      select-none
+      pointer-events-none
+    "
+  />
 
-            </div>
+  <div className="absolute inset-0 z-10" />
+
+</div>
 
             <div className="p-4">
 

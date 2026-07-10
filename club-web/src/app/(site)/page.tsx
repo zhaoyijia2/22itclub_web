@@ -1,21 +1,21 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
-export const revalidate = 60; 
-// 🔥 关键：ISR缓存 60秒（性能提升最大）
+export const revalidate = 60;
 
 export default async function Home() {
   const supabase = await createClient();
 
   const { data: settings } = await supabase
-  .from("site_settings")
-  .select("*")
-  .eq("id", 1)
-  .single();
+    .from("site_settings")
+    .select("*")
+    .eq("id", 1)
+    .single();
+
   const { data: news } = await supabase
     .from("news")
-    .select("id,title,date") // 🔥 只取需要字段（减少数据量）
-    .order("id", { ascending: false }) // 🔥 用 id 排序更快
+    .select("id,title,date")
+    .order("id", { ascending: false })
     .limit(6);
 
   return (
@@ -26,6 +26,7 @@ export default async function Home() {
         <img
           src="/banner.jpg"
           className="w-full h-[520px] object-cover"
+          alt="Banner"
         />
       </section>
 
@@ -33,6 +34,7 @@ export default async function Home() {
         <img
           src="/banner.jpg"
           className="w-full"
+          alt="Banner"
         />
       </section>
 
@@ -51,35 +53,37 @@ export default async function Home() {
       {/* 数据 */}
       <section className="bg-red-900 text-white py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-10 text-center">
+
           <Data
-  number={settings?.home_stat1_value ?? ""}
-  text={settings?.home_stat1_name ?? ""}
-/>
+            number={settings?.home_stat1_value ?? ""}
+            text={settings?.home_stat1_name ?? ""}
+          />
 
-<Data
-  number={settings?.home_stat2_value ?? ""}
-  text={settings?.home_stat2_name ?? ""}
-/>
+          <Data
+            number={settings?.home_stat2_value ?? ""}
+            text={settings?.home_stat2_name ?? ""}
+          />
 
-<Data
-  number={settings?.home_stat3_value ?? ""}
-  text={settings?.home_stat3_name ?? ""}
-/>
+          <Data
+            number={settings?.home_stat3_value ?? ""}
+            text={settings?.home_stat3_name ?? ""}
+          />
 
-<Data
-  number={settings?.home_stat4_value ?? ""}
-  text={settings?.home_stat4_name ?? ""}
-/>
+          <Data
+            number={settings?.home_stat4_value ?? ""}
+            text={settings?.home_stat4_name ?? ""}
+          />
 
-<Data
-  number={settings?.home_stat5_value ?? ""}
-  text={settings?.home_stat5_name ?? ""}
-/>
+          <Data
+            number={settings?.home_stat5_value ?? ""}
+            text={settings?.home_stat5_name ?? ""}
+          />
 
-<Data
-  number={settings?.home_stat6_value ?? ""}
-  text={settings?.home_stat6_name ?? ""}
-/>
+          <Data
+            number={settings?.home_stat6_value ?? ""}
+            text={settings?.home_stat6_name ?? ""}
+          />
+
         </div>
       </section>
 
@@ -87,8 +91,14 @@ export default async function Home() {
       <section className="px-5 md:px-20 py-16">
 
         <div className="flex justify-between mb-10">
-          <h2 className="text-4xl font-bold">新闻资讯</h2>
-          <Link href="/news" className="text-gray-500">
+          <h2 className="text-4xl font-bold">
+            新闻资讯
+          </h2>
+
+          <Link
+            href="/news"
+            className="text-gray-500"
+          >
             查看更多 →
           </Link>
         </div>
@@ -96,13 +106,21 @@ export default async function Home() {
         <div className="space-y-5">
 
           {news?.map((item: any) => (
-            <Link key={item.id} href={`/news/${item.id}`}>
+            <Link
+              key={item.id}
+              href={`/news/${item.id}`}
+            >
               <div className="flex justify-between border-b pb-5 hover:bg-gray-50">
+
                 <div className="flex items-center gap-3">
                   <span className="w-2 h-2 bg-red-900 rounded-full" />
                   <p>{item.title}</p>
                 </div>
-                <span className="text-gray-400">{item.date}</span>
+
+                <span className="text-gray-400">
+                  {item.date}
+                </span>
+
               </div>
             </Link>
           ))}
@@ -110,6 +128,7 @@ export default async function Home() {
         </div>
 
       </section>
+
       {/* 友情链接 */}
       <section className="bg-gray-100 border-t py-10">
 
@@ -138,7 +157,27 @@ export default async function Home() {
                 transition
               "
             >
-              学校官方网站 →
+              🏫 学校官方网站 →
+            </a>
+
+            <a
+              href="https://pd.qq.com/s/24w6xuv9n"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                inline-flex
+                items-center
+                rounded-lg
+                border
+                bg-white
+                px-6
+                py-3
+                hover:border-red-900
+                hover:text-red-900
+                transition
+              "
+            >
+              💬 社团QQ频道 →
             </a>
 
           </div>
@@ -146,6 +185,7 @@ export default async function Home() {
         </div>
 
       </section>
+
     </main>
   );
 }
@@ -159,8 +199,13 @@ function Data({
 }) {
   return (
     <div>
-      <h3 className="text-4xl font-bold">{number}</h3>
-      <p className="text-gray-200 mt-2">{text}</p>
+      <h3 className="text-4xl font-bold">
+        {number}
+      </h3>
+
+      <p className="text-gray-200 mt-2">
+        {text}
+      </p>
     </div>
   );
 }

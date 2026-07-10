@@ -68,7 +68,7 @@ export default async function ContactPage() {
 
     <p>
       <span className="font-semibold">QQ：</span>
-      {data?.teacher_qq}
+      {data?. teacher_qq}
     </p>
 
   </div>
